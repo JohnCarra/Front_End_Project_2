@@ -179,7 +179,6 @@ const IndexPage = () => {
     
   ];
 
-
   const data01 = [
     { name: "Total Cases", value:  stats?.cases},
     { name: "Total Recovered Cases", value: stats?.recovered }

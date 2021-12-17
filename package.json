@@ -19,7 +19,8 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
     "react-leaflet": "^2.7.0",
-    "recharts": "^2.1.6"
+    "recharts": "^2.1.6",
+    "scss": "^0.2.4"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",

@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const API_HOST = 'https://corona.lmao.ninja/v2';
 
+
 const ENDPOINTS = [
   {
     id: 'all',

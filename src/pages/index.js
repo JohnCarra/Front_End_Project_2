@@ -10,6 +10,9 @@ import Layout from 'components/Layout';
 import Container from 'components/Container';
 import Map from 'components/Map';
 
+//const API_URL = 'https://disease.sh/v3/covid-19/historical/all?lastdays=all';
+
+
 const LOCATION = {
   lat: 0,
   lng: 0,
@@ -18,6 +21,7 @@ const CENTER = [LOCATION.lat, LOCATION.lng];
 const DEFAULT_ZOOM = 2;
 
 const IndexPage = () => {
+
   const { data: stats = {} } = useTracker({
     api: 'all',
   });
@@ -25,6 +29,8 @@ const IndexPage = () => {
   const { data: countries = [] } = useTracker({
     api: 'countries',
   });
+
+
 
   const hasCountries = Array.isArray( countries ) && countries.length > 0;
 
@@ -180,14 +186,16 @@ const IndexPage = () => {
   ];
 
   const data01 = [
-    { name: "Total Cases", value:  stats?.cases},
-    { name: "Total Recovered Cases", value: stats?.recovered }
+    { name: "Total Cases", value: stats?.cases},
+    { name: "Total Deaths", value: stats?.deaths},
+    
   ];
   
   const data02 = [
-    { name: "Total Deaths", value: stats?.deaths},
     { name: "Active Cases", value: stats?.active},
-    { name: "Critical Cases", value: stats?.critical }
+    { name: "Critical Cases", value: stats?.critical },
+    { name: "New Cases", value:  stats?.todayCases},
+    { name: "New Deaths", value:  stats?.todayDeaths},
   ];
   
   
@@ -226,8 +234,8 @@ const IndexPage = () => {
           <p>Last Updated: { stats ? friendlyDate( stats?.updated ) : '-' }</p>
         </div>
       </div>
-        <div class="container">
-          <div class="row">
+        <div className="container">
+          <div className="row">
             <div>
                       <LineChart
                     width={500}

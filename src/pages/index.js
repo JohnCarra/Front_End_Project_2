@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Helmet } from 'react-helmet';
 import L from 'leaflet';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart,Bar, PieChart, Pie } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart,Bar, PieChart, Pie } from 'recharts';
 
 import { useTracker } from 'hooks';
 import { commafy, friendlyDate } from 'lib/util';
@@ -9,6 +9,8 @@ import { commafy, friendlyDate } from 'lib/util';
 import Layout from 'components/Layout';
 import Container from 'components/Container';
 import Map from 'components/Map';
+import Table from 'components/Table';
+import TableCountry from 'components/TableCountry';
 
 //const API_URL = 'https://disease.sh/v3/covid-19/historical/all?lastdays=all';
 
@@ -29,7 +31,6 @@ const IndexPage = () => {
   const { data: countries = [] } = useTracker({
     api: 'countries',
   });
-
 
 
   const hasCountries = Array.isArray( countries ) && countries.length > 0;
@@ -197,6 +198,8 @@ const IndexPage = () => {
     { name: "New Cases", value:  stats?.todayCases},
     { name: "New Deaths", value:  stats?.todayDeaths},
   ];
+
+
   
   
   return (
@@ -310,8 +313,13 @@ const IndexPage = () => {
                   />
                   <Tooltip />
                 </PieChart>
-                </div>
+                </div>   
             </div>      
+        </div>
+      
+        <div class="row">
+            <Table/>
+            <TableCountry/>
         </div>
       
     </Layout>

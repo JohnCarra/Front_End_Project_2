@@ -1,4 +1,4 @@
-Live: https://covid-website-4681c.web.app/
+Live: https://covid19-dashboard-a4aa0.web.app/
 
 
 Danny Ng - dannyng@csu.fullerton.edu
